@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LvlGenerator : MonoBehaviour {
 
@@ -11,9 +12,13 @@ public class LvlGenerator : MonoBehaviour {
 	public int timers = 5;
 	public bool isStart = false;
 	public TimerGame timerGame;
+	public TextScoreController textScoreController;
+	public float initialScore = 300;
+	public int currentScore = 0;
 
 	void Start()
 	{
+		
 		ResetPosition ();
 		timerGame.SetTotalTime (timers);
 	}
@@ -36,7 +41,7 @@ public class LvlGenerator : MonoBehaviour {
 
 	public void StartCompare()
 	{
-		timerGame.ResetTimer ();
+		
 		isStart = true;
 		timerGame.isStart = false;
 
@@ -49,10 +54,23 @@ public class LvlGenerator : MonoBehaviour {
 		{
 			Invoke ("ResetPosition", 1);
 			Invoke ("ResetTimer", 1);
+			currentScore += GetScore();
+			textScoreController.UpdateScore (currentScore);
+			timerGame.ResetTimer ();
 		}else{
+			Invoke ("GotoGameOver",1);
 
 		}
 
+	}
+
+	public void GotoGameOver()
+	{
+		PlayerPrefs.SetInt ("CurrentScore", currentScore);
+		if (currentScore > PlayerPrefs.GetInt ("BestScore", 0)) {
+			PlayerPrefs.SetInt ("BestScore", currentScore);
+		}
+		SceneManager.LoadScene (2);
 	}
 
 	public void ResetTimer()
@@ -76,8 +94,15 @@ public class LvlGenerator : MonoBehaviour {
 	public void GotoPuzzle()
 	{
 		for (int i = 0; i < 3; i++) {
-			iTween.MoveTo (allLevelPuzzle [i], allPuzzlePositioner [i].transform.position, 0.8f);
+			Vector3 posTarget = allPuzzlePositioner [i].transform.position;
+			posTarget.z = -1;
+			iTween.MoveTo (allLevelPuzzle [i],posTarget, 0.8f);
 		}
+	}
+
+	public int GetScore()
+	{
+		return Mathf.FloorToInt (timerGame.currentTime / timerGame.TotalTime * initialScore);
 	}
 
 }
