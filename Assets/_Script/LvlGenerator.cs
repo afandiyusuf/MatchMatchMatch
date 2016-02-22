@@ -15,10 +15,11 @@ public class LvlGenerator : MonoBehaviour {
 	public TextScoreController textScoreController;
 	public float initialScore = 300;
 	public int currentScore = 0;
+	private SoundManager SM;
 
 	void Start()
 	{
-		
+		SM = GameObject.FindGameObjectWithTag ("SoundManager").GetComponent<SoundManager> ();
 		ResetPosition ();
 		timerGame.SetTotalTime (timers);
 	}
@@ -41,9 +42,10 @@ public class LvlGenerator : MonoBehaviour {
 
 	public void StartCompare()
 	{
-		
+		SM.PlayEnter ();
 		isStart = true;
-		timerGame.isStart = false;
+		//timerGame.isStart = false;
+		timerGame.ResetTimer ();
 
 		if (isPressed)
 			return;
@@ -52,11 +54,12 @@ public class LvlGenerator : MonoBehaviour {
 		GotoPuzzle ();
 		if(GetComponent<PlayerManager> ().compareArrIndex () == true)
 		{
+			SM.PlayTrue ();
 			Invoke ("ResetPosition", 1);
 			Invoke ("ResetTimer", 1);
 			currentScore += GetScore();
 			textScoreController.UpdateScore (currentScore);
-			timerGame.ResetTimer ();
+
 		}else{
 			Invoke ("GotoGameOver",1);
 
@@ -76,6 +79,7 @@ public class LvlGenerator : MonoBehaviour {
 	public void ResetTimer()
 	{
 		timerGame.isStart = true;
+		timerGame.timerGo = true;
 	}
 	public void ResetPosition()
 	{

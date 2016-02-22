@@ -308,6 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 275920032}
+  - {fileID: 670273328}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1 &166591842
@@ -701,6 +702,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 670273329}
+        m_MethodName: PlayEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &375394364
@@ -803,6 +815,52 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 405215892}
+--- !u!1001 &449496532
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 119551944}
+    m_Modifications:
+    - target: {fileID: 482446, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482446, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482446, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482446, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482446, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482446, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482446, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 482446, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224400, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c9f2e1a98c00dc4f84d4b9bdffea9c5, type: 3}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &452722962
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,6 +935,16 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 452722962}
+--- !u!4 &670273328 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 482446, guid: 62b7ec5c68eb35b4b83927227ba4c321, type: 2}
+  m_PrefabInternal: {fileID: 449496532}
+--- !u!114 &670273329 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11407016, guid: 62b7ec5c68eb35b4b83927227ba4c321,
+    type: 2}
+  m_PrefabInternal: {fileID: 449496532}
+  m_Script: {fileID: 11500000, guid: 3a96476b56c70ee4b930b4016c604109, type: 3}
 --- !u!1 &694066239
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +1022,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 90274806}
         m_MethodName: GotoMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670273329}
+        m_MethodName: PlayEnter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

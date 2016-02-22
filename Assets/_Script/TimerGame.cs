@@ -10,9 +10,13 @@ public class TimerGame : MonoBehaviour {
 	public float TotalTime = 5;
 	private LvlGenerator lvlGenerator;
 	public float initWidth;
+	Image skin;
+	public bool isReset;
+	public bool timerGo;
 
 	void Start()
 	{
+		skin = GetComponent<Image> ();
 		lvlGenerator = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<LvlGenerator> ();
 		currentTime = TotalTime;
 	
@@ -27,10 +31,20 @@ public class TimerGame : MonoBehaviour {
 	void Update()
 	{
 		if (isStart) {
-			currentTime -= Time.deltaTime;
-			float now = initWidth * currentTime / TotalTime;
-			timer.rectTransform.sizeDelta = new Vector2 (now, 10);
-			if (now < 0) {
+			if (!isReset) {
+				if(timerGo)
+				currentTime -= Time.deltaTime;
+			} else {
+				currentTime = Mathf.Lerp (currentTime, TotalTime*1.2f, Time.deltaTime*4);
+				if (currentTime > TotalTime) {
+					currentTime = TotalTime;
+					isReset = false;
+				}
+			}
+			float now =  currentTime;
+			skin.fillAmount = currentTime / TotalTime;
+			//timer.rectTransform.sizeDelta = new Vector2 (now, 10);
+			if (currentTime > TotalTime) {
 				lvlGenerator.GotoGameOver ();
 			}
 		}
@@ -39,7 +53,17 @@ public class TimerGame : MonoBehaviour {
 
 	public void ResetTimer()
 	{
-		currentTime = TotalTime;
+		isReset = true;
+		timerGo = false;
+		TotalTime -= TotalTime / 100;
 	}
+
+	public void SetTimerFalse()
+	{
+		timerGo = true;
+	}
+
+
+
 
 }

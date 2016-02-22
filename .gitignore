@@ -19,10 +19,12 @@ sysinfo.txt
 /*.user
 /*.unityproj
 /*.booproj
+/*.apk
  
 # ============ #
 # OS generated #
 # ============ #
+*.apk
 .DS_Store*
 ._*
 .Spotlight-V100
